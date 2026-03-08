@@ -68,7 +68,7 @@ A Instância A salvou a sessão no Redis Cloud e encerrou. A Instância B subiu 
 
 - **Mudança de estados:** Uma flag `is_relocating` só distingue dois estados, mas o processo tem três fases relevantes: bufferizando (`MIGRATING`), reconectando (`RECONNECTING`) e operacional (`CONNECTED`). Além disso, estados explícitos dificultam transições inválidas — com uma flag booleana nada impede ir de `MIGRATING` direto para `CONNECTED` sem passar pelo `RECONNECTING`, o que poderia causar o envio de mensagens antes da nova conexão estar estabelecida. A máquina de estados torna essas transições explícitas no código, facilitando a identificação de comportamentos incorretos.
 
-- **Dois sistemas reais:** Kubernetes Pod rescheduling, onde o Service mantém o mesmo DNS interno mesmo com o Pod sendo movido entre nós; e live migration de VMs em hipervisores como VMware, onde a VM é transferida entre hosts com a memória copiada incrementalmente enquanto continua em execução.
+- **Sistema real:** Kubernetes Pod rescheduling, onde o Service mantém o mesmo DNS interno mesmo com o Pod sendo movido entre nós; e live migration de VMs em hipervisores como VMware, onde a VM é transferida entre hosts com a memória copiada incrementalmente enquanto continua em execução.
 
 - **Referências**
 
